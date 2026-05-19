@@ -1179,7 +1179,7 @@
               <div style="flex:1; min-width:0;">
                 <div class="title">Lista compartilhada ativa</div>
                 <div class="label">Compartilhando com:</div>
-                <div class="email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4221232f2b2e2302272f232b2e6c212d2f">[email&#160;protected]</a></div>
+                <div class="email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1370727e7a7f7253767e727a7f3d707c7e">[email&#160;protected]</a></div>
               </div>
             </div>
             <div class="share-howto-title">Como funciona</div>
@@ -1258,10 +1258,57 @@
 
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Constrói os links mailto via JS para evitar reescrita do Cloudflare Email Obfuscation.
-  document.querySelectorAll('a[data-mailto-u]').forEach(function(a) {
-    a.href = 'mailto:' + a.dataset.mailtoU + '@' + a.dataset.mailtoD;
-  });
+  (function () {
+    var toast;
+    function showToast(target) {
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.style.cssText = [
+          'position:fixed',
+          'z-index:9999',
+          'padding:7px 12px',
+          'background:#1a2a23',
+          'color:#f4ecdc',
+          'font:500 12px/1.2 Inter, system-ui, sans-serif',
+          'letter-spacing:0.2px',
+          'border-radius:8px',
+          'box-shadow:0 4px 14px rgba(0,0,0,0.18)',
+          'pointer-events:none',
+          'opacity:0',
+          'transform:translate(-50%, -100%) translateY(4px)',
+          'transition:opacity 160ms ease, transform 160ms ease',
+          'white-space:nowrap'
+        ].join(';');
+        toast.textContent = 'E-mail copiado';
+        document.body.appendChild(toast);
+      }
+      var r = target.getBoundingClientRect();
+      toast.style.left = (r.left + r.width / 2) + 'px';
+      toast.style.top = (r.top - 6) + 'px';
+      // force reflow then animate in
+      void toast.offsetWidth;
+      toast.style.opacity = '1';
+      toast.style.transform = 'translate(-50%, -100%) translateY(0)';
+      clearTimeout(toast._timer);
+      toast._timer = setTimeout(function () {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translate(-50%, -100%) translateY(4px)';
+      }, 1600);
+    }
+
+    document.querySelectorAll('a[data-mailto-u]').forEach(function (a) {
+      var email = a.dataset.mailtoU + '@' + a.dataset.mailtoD;
+      a.href = 'mailto:' + email;
+      a.addEventListener('click', function () {
+        // Copy in parallel; mailto: still fires if a client is configured.
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(email).then(function () {
+            showToast(a);
+          }).catch(function () {});
+        }
+      });
+    });
+  })();
 </script>
 </body>
 </html>
