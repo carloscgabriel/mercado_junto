@@ -1179,7 +1179,7 @@
               <div style="flex:1; min-width:0;">
                 <div class="title">Lista compartilhada ativa</div>
                 <div class="label">Compartilhando com:</div>
-                <div class="email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1c7f7d7175707d5c79717d7570327f7371">[email&#160;protected]</a></div>
+                <div class="email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4221232f2b2e2302272f232b2e6c212d2f">[email&#160;protected]</a></div>
               </div>
             </div>
             <div class="share-howto-title">Como funciona</div>
@@ -1246,7 +1246,7 @@
       <span>© 2026 Mercado Junto</span>
     </div>
     <div style="display: flex; gap: 24px;">
-      <a href="/cdn-cgi/l/email-protection#d4a7a1a4bba6a0b1f2f7e2e0efb9b1a6b7b5b0bbbea1baa0bbfab7bbb9fab6a6">suporte&#64;mercadojunto.com.br</a>
+      <a href="#" data-mailto-u="suporte" data-mailto-d="mercadojunto.com.br">suporte&#64;mercadojunto.com.br</a>
       <a href="termos-e-privacidade.html">Termos e Privacidade (LGPD)</a>
     </div>
   </footer>
@@ -1256,5 +1256,12 @@
   @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 </style>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Constrói os links mailto via JS para evitar reescrita do Cloudflare Email Obfuscation.
+  document.querySelectorAll('a[data-mailto-u]').forEach(function(a) {
+    a.href = 'mailto:' + a.dataset.mailtoU + '@' + a.dataset.mailtoD;
+  });
+</script>
+</body>
 </html>
