@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mercado Junto — A lista de compras que vocês dois enxergam</title>
-<meta name="description" content="App grátis de lista de compras compartilhada. Uma lista, dois celulares, zero esquecimentos. Sincroniza em tempo real entre você e seu parceiro." />
+<title>Mercado Junto — Uma lista de compras para até 10 pessoas</title>
+<meta name="description" content="App grátis de lista de compras compartilhada em tempo real. Use sozinho ou com até 9 outras pessoas: família, casal, colegas de casa, equipe. Cada participante com suas próprias permissões." />
 <meta name="theme-color" content="#2f6b3d" />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="apple-touch-icon" href="favicon.svg" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Mercado Junto — Uma lista. Dois celulares. Zero esquecimentos." />
-<meta property="og:description" content="App grátis de lista de compras compartilhada em tempo real. Sem mais 'esqueci de avisar que fui no mercado'." />
+<meta property="og:title" content="Mercado Junto — Uma lista. Até 10 pessoas. Zero esquecimentos." />
+<meta property="og:description" content="App grátis de lista de compras compartilhada em tempo real, para até 10 pessoas. Família, casal, república ou equipe — todo mundo na mesma lista." />
 <meta property="og:image" content="og-image.png?v=4" />
 <meta property="og:image:width" content="2400" />
 <meta property="og:image:height" content="1260" />
@@ -20,8 +20,8 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Mercado Junto — Uma lista. Dois celulares. Zero esquecimentos." />
-<meta name="twitter:description" content="App grátis de lista de compras compartilhada em tempo real." />
+<meta name="twitter:title" content="Mercado Junto — Uma lista. Até 10 pessoas. Zero esquecimentos." />
+<meta name="twitter:description" content="App grátis de lista de compras compartilhada em tempo real, para até 10 pessoas." />
 <meta name="twitter:image" content="og-image.png?v=4" />
 
 <!-- Bundler thumbnail -->
@@ -249,6 +249,14 @@
     padding: 2px 6px;
     border-radius: 6px;
     margin-left: 6px;
+  }
+  .chip .by {
+    font-size: 10px;
+    color: var(--muted);
+    font-weight: 500;
+    margin-left: 6px;
+    padding-left: 8px;
+    border-left: 1px solid #e5dfd1;
   }
 
   /* ---- SECTION COMMON ---- */
@@ -747,30 +755,116 @@
 
   /* sharing screen */
   .share-status {
-    margin: 8px 16px 24px;
+    margin: 8px 16px 18px;
     background: var(--deep);
     color: var(--cream);
     border-radius: 14px;
-    padding: 20px 16px;
+    padding: 16px 14px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 4px;
+    gap: 2px;
   }
   .share-status-icon {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: var(--sun);
     color: var(--deep);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
-  .share-status-text { font-size: 14px; font-weight: 700; }
-  .share-status-sub { font-size: 10px; color: rgba(244,236,220,0.65); }
+  .share-status-text { font-size: 12px; font-weight: 700; }
+  .share-status-sub { font-size: 10px; color: rgba(244,236,220,0.7); }
+  .share-status-count {
+    margin-top: 8px;
+    background: rgba(240,185,74,0.15);
+    color: var(--sun);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    letter-spacing: 0.4px;
+  }
+  .member-row {
+    margin: 0 12px 6px;
+    background: white;
+    border-radius: 12px;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .member-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--forest);
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .member-avatar.admin { background: var(--sun); color: var(--deep); }
+  .member-info { flex: 1; min-width: 0; }
+  .member-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .perm-row { display: flex; gap: 3px; margin-top: 3px; }
+  .perm-pill {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    padding: 2px 5px;
+    border-radius: 4px;
+    background: #e3f0d8;
+    color: var(--forest);
+    text-transform: uppercase;
+  }
+  .perm-pill.off { background: #f0eadc; color: #b0a89a; }
+  .perm-pill.admin {
+    background: var(--sun);
+    color: var(--deep);
+  }
+  .invite-btn {
+    margin: 12px 12px 6px;
+    background: var(--forest);
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .invite-share {
+    margin: 0 12px;
+    border: 1.5px solid var(--forest);
+    color: var(--forest);
+    border-radius: 10px;
+    padding: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    background: transparent;
+  }
   .share-section-label {
     padding: 0 16px 6px;
     font-size: 9px;
@@ -935,9 +1029,9 @@
   <section class="hero" style="padding-top: 40px;">
     <div>
       <div class="eyebrow">App de lista de compras compartilhada</div>
-      <h1>Uma lista. <br/><em>Dois celulares.</em><br/>Zero esquecimentos.</h1>
+      <h1>Uma lista. <br/><em>Até 10 pessoas.</em><br/>Zero esquecimentos.</h1>
       <p class="lede">
-        Mercado Junto sincroniza a lista de compras entre você e seu parceiro em tempo real. Quem chegar primeiro no mercado, leva tudo — porque os dois sempre veem a mesma lista, atualizada agora.
+        Mercado Junto sincroniza a lista de compras em tempo real entre você e até 9 outras pessoas. Use sozinho, com seu parceiro, sua família, sua república ou sua equipe — quem chegar primeiro no mercado, leva tudo certo.
       </p>
       <div class="cta-row">
         <a href="#video" id="open-video-btn" class="btn-primary">
@@ -973,7 +1067,7 @@
             <path d="M5 12l5 5L20 7" stroke="#f4ecdc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </span>
-        Leite integral <span class="qty">2L</span>
+        Leite integral <span class="qty">2L</span><span class="by">Ana</span>
       </div>
       <div class="chip chip-2">
         <span class="chip-dot">
@@ -981,7 +1075,7 @@
             <path d="M5 12l5 5L20 7" stroke="#f4ecdc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </span>
-        Pão francês <span class="qty">500g</span>
+        Pão francês <span class="qty">500g</span><span class="by">Bruno</span>
       </div>
       <div class="chip chip-3">
         <span class="chip-dot">
@@ -989,7 +1083,7 @@
             <path d="M5 12l5 5L20 7" stroke="#f4ecdc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </span>
-        Tomate <span class="qty">x4</span>
+        Tomate <span class="qty">x4</span><span class="by">Camila</span>
       </div>
     </div>
   </section>
@@ -1000,7 +1094,7 @@
   <div class="how">
     <div class="section-eyebrow">Como funciona</div>
     <h2>Três passos. Um minuto. Pronto.</h2>
-    <p class="section-lede">Sem cadastro complicado, sem senha pra esquecer, sem mensalidade. Você entra com e-mail, convida a outra pessoa, e começa a lista.</p>
+    <p class="section-lede">Sem cadastro complicado, sem senha pra esquecer, sem mensalidade. Você entra com e-mail, cria a lista e convida quem quiser — até 9 pessoas — com as permissões que quiser dar a cada uma.</p>
 
     <div class="steps">
       <div class="step">
@@ -1012,14 +1106,14 @@
       <div class="step">
         <div class="step-num">02</div>
         <div class="step-divider"></div>
-        <h3>Convide a outra pessoa</h3>
-        <p>Informe o e-mail do seu parceiro. Quando os dois se conectarem, a lista é criada automaticamente — e fica viva entre os dois aparelhos.</p>
+        <h3>Crie ou entre numa lista</h3>
+        <p>Comece uma lista nova ou peça pra entrar na lista de outra pessoa pelo e-mail dela. Use sozinho ou compartilhe — você decide.</p>
       </div>
       <div class="step">
         <div class="step-num">03</div>
         <div class="step-divider"></div>
-        <h3>Adicione, marque, conclua</h3>
-        <p>Busque produtos pelo nome, tire foto ou digite manualmente. Quando um dos dois marca algo, o outro vê na hora. Compras tranquilas.</p>
+        <h3>Convide até 9 pessoas</h3>
+        <p>Adicione participantes pelo e-mail ou pelo WhatsApp. Defina, para cada um, se pode criar, modificar ou remover itens. As mudanças aparecem na lista de todo mundo na hora.</p>
       </div>
     </div>
   </div>
@@ -1033,7 +1127,7 @@
         <div class="section-eyebrow">O app</div>
         <h2>Feito pra ser usado entre as gôndolas.</h2>
       </div>
-      <p class="section-lede">Marque o item ao colocar no carrinho e ele some da lista do seu parceiro também. Interface enxuta, feita pra ser usada com uma mão só.</p>
+      <p class="section-lede">Pegou o item? Toque pra remover e ele some da lista de todo mundo. Adicionou? Aparece na hora pra todos os participantes. Interface enxuta, feita pra ser usada com uma mão só.</p>
     </div>
 
     <div class="screens-grid">
@@ -1105,7 +1199,7 @@
         <div class="screen-label">
           <div class="num">i.</div>
           <h4>Sua lista, ao vivo</h4>
-          <p>Pegou o produto? Toque no botão vermelho e ele some da lista dos dois. Adicionou? Aparece na hora.</p>
+          <p>Pegou o produto? Toque no botão vermelho e ele some da lista de todo mundo. Adicionou algo? Aparece na hora pra todos os participantes.</p>
         </div>
       </div>
 
@@ -1174,34 +1268,77 @@
               <div class="title-row">Compartilhamento</div>
               <div style="width: 18px;"></div>
             </div>
-            <div class="share-card-active">
-              <div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div style="flex:1; min-width:0;">
-                <div class="title">Lista compartilhada ativa</div>
-                <div class="label">Compartilhando com:</div>
-                <div class="email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4d2e2c2024212c0d28202c2421632e2220">[email&#160;protected]</a></div>
+            <div class="share-status">
+              <div class="share-status-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="10" r="2.5" stroke="currentColor" stroke-width="2"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 17c1-2 3-3 5-3s4 1 5 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+              <div class="share-status-text">Você é o administrador</div>
+              <div class="share-status-sub">Convide até 9 participantes</div>
+              <div class="share-status-count">4 / 10 PESSOAS</div>
+            </div>
+
+            <div class="share-section-label" style="padding-top: 4px;">Participantes</div>
+
+            <div class="member-row">
+              <div class="member-avatar admin">A</div>
+              <div class="member-info">
+                <div class="member-name">você (admin)</div>
+                <div class="perm-row">
+                  <span class="perm-pill admin">Administrador</span>
+                </div>
               </div>
             </div>
-            <div class="share-howto-title">Como funciona</div>
-            <div class="share-howto-row">
-              <div class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/></svg></div>
-              Vocês dois veem a mesma lista em tempo real
+
+            <div class="member-row">
+              <div class="member-avatar">B</div>
+              <div class="member-info">
+                <div class="member-name"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="137161667d7c53767e727a7f3d707c7e">[email&#160;protected]</a></div>
+                <div class="perm-row">
+                  <span class="perm-pill">Criar</span>
+                  <span class="perm-pill">Modificar</span>
+                  <span class="perm-pill">Remover</span>
+                </div>
+              </div>
             </div>
-            <div class="share-howto-row">
-              <div class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 8v8M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
-              Qualquer um pode adicionar ou remover produtos
+
+            <div class="member-row">
+              <div class="member-avatar">C</div>
+              <div class="member-info">
+                <div class="member-name"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f192909c989d90b1949c90989ddf929e9c">[email&#160;protected]</a></div>
+                <div class="perm-row">
+                  <span class="perm-pill">Criar</span>
+                  <span class="perm-pill off">Modificar</span>
+                  <span class="perm-pill off">Remover</span>
+                </div>
+              </div>
             </div>
-            <div class="share-howto-row">
-              <div class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 0114-5l2-2v6h-6l2-2a6 6 0 10-2 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              As mudanças aparecem instantaneamente
+
+            <div class="member-row">
+              <div class="member-avatar">D</div>
+              <div class="member-info">
+                <div class="member-name"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4c2825292b230c29212d2520622f2321">[email&#160;protected]</a></div>
+                <div class="perm-row">
+                  <span class="perm-pill off">Criar</span>
+                  <span class="perm-pill off">Modificar</span>
+                  <span class="perm-pill off">Remover</span>
+                </div>
+              </div>
             </div>
-            <div class="share-cancel"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M10 6H6a2 2 0 00-2 2v8a2 2 0 002 2h4M14 6h4a2 2 0 012 2v8a2 2 0 01-2 2h-4M9 12h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Cancelar compartilhamento</div>
+
+            <div class="invite-btn">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+              Convidar por e-mail
+            </div>
+            <div class="invite-share">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 4L4 11l6 2 2 6 8-15z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+              Compartilhar pelo WhatsApp
+            </div>
           </div>
         </div>
         <div class="screen-label">
           <div class="num">iii.</div>
-          <h4>Conectados com um e-mail</h4>
-          <p>Os dois informam o e-mail do outro — pronto, lista compartilhada. Cancele a qualquer momento.</p>
+          <h4>Quem entra e o que pode fazer</h4>
+          <p>Convide até 9 pessoas pelo e-mail ou WhatsApp. Defina, por pessoa, se pode criar, modificar ou remover itens.</p>
         </div>
       </div>
     </div>
@@ -1213,7 +1350,7 @@
   <section id="download" class="download">
     <div class="section-eyebrow">Baixar</div>
     <h2>Comece ho<span style="font-family: Georgia, 'Times New Roman', serif;">j</span>e. <span style="color: var(--forest);">Grátis pra sempre.</span></h2>
-    <p class="section-lede">Disponível para Android. Sem anúncios, sem assinatura, sem captura de dados além do necessário.</p>
+    <p class="section-lede">Disponível para Android. Sem anúncios, sem assinatura, sem captura de dados além do necessário. Use sozinho ou compartilhe com até 9 pessoas.</p>
     <a href="#" class="play-badge">
       <svg class="play-icon" viewBox="0 0 32 32" fill="none">
         <path d="M5 4l16 12L5 28V4z" fill="#34A853"/>
