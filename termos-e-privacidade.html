@@ -343,7 +343,7 @@
   <header class="doc-header">
     <div class="eyebrow">Documento legal</div>
     <h1>Termos de Uso e <em>Política de Privacidade</em></h1>
-    <div class="updated">Última atualização: 22 de maio de 2026</div>
+    <div class="updated">Última atualização: 28 de maio de 2026</div>
   </header>
 
   <div class="doc">
@@ -380,7 +380,10 @@
           <li>Itens adicionados à lista de compras (nome do produto, quantidade e unidade de medida);</li>
           <li>Fotografias de produtos tiradas pela câmera ou selecionadas da galeria do dispositivo, quando o usuário optar por adicioná-las ao cadastrar um item manualmente. Essas imagens são armazenadas de forma segura como parte do cadastro do item;</li>
           <li>Imagens de produtos obtidas automaticamente via busca, quando disponíveis;</li>
-          <li>Data e hora das ações realizadas no aplicativo.</li>
+          <li>Data e hora das ações realizadas no aplicativo;</li>
+          <li>Identificador do dispositivo para envio de notificações push (token FCM), armazenado enquanto o aplicativo estiver instalado e com notificações ativas;</li>
+          <li>Endereço IP do dispositivo, registrado automaticamente nos logs de infraestrutura do Firebase Authentication e das Cloud Functions a cada acesso;</li>
+          <li>Endereço IP transmitido diretamente ao servidor da Open Food Facts quando você realiza buscas de produtos ou carrega imagens de produtos (ver §3).</li>
         </ul>
         <p>Não coletamos dados de localização, dados financeiros, documentos de identidade ou qualquer outra informação pessoal além das listadas acima.</p>
       </section>
@@ -391,12 +394,13 @@
         <ul>
           <li>Autenticar o usuário no aplicativo;</li>
           <li>Sincronizar a lista de compras entre os usuários cadastrados como parceiros;</li>
+          <li>Enviar notificações push sobre atividades na lista de compras (por exemplo: item adicionado por um parceiro), utilizando o token FCM do dispositivo;</li>
           <li>Garantir o funcionamento correto das funcionalidades do app.</li>
         </ul>
         <p>Seus dados <strong>NÃO</strong> são utilizados para fins publicitários, <strong>NÃO</strong> são vendidos e <strong>NÃO</strong> são compartilhados com terceiros, exceto com os seguintes provedores de infraestrutura, estritamente necessários para o funcionamento do aplicativo:</p>
         <ul>
           <li><strong>Google Firebase</strong> (Firestore, Authentication, Storage, App Check e Cloud Functions) — armazenamento, autenticação e processamento dos dados;</li>
-          <li><strong>Open Food Facts</strong> (openfoodfacts.org) — API pública de busca de produtos, consultada apenas por nome de produto, sem transmissão de dados pessoais do usuário.</li>
+          <li><strong>Open Food Facts</strong> (openfoodfacts.org) — API pública de busca de produtos. As requisições de busca e o carregamento de imagens de produtos partem diretamente do seu dispositivo, o que implica a transmissão do seu endereço IP ao servidor da Open Food Facts, podendo envolver transferência internacional de dados. Nenhum outro dado pessoal é enviado a esse provedor.</li>
         </ul>
       </section>
 
@@ -409,7 +413,10 @@
 
       <section id="s5">
         <h2><span class="num">05</span>Compartilhamento de Dados</h2>
-        <p>Ao utilizar a função de compartilhamento de lista, o seu endereço de e-mail ficará visível para o usuário com quem você escolher compartilhar a lista. Você pode desfazer o compartilhamento a qualquer momento nas configurações do aplicativo.</p>
+        <p>Ao utilizar a função de compartilhamento de lista, o seu endereço de e-mail ficará visível para o usuário com quem você escolher compartilhar a lista.</p>
+        <p>Ao enviar um convite ou solicitar adesão a uma lista, o seu endereço de e-mail é incluído na notificação push enviada ao destinatário — podendo aparecer na tela de bloqueio do dispositivo — mesmo antes de o convite ser aceito.</p>
+        <p>Durante o período de compartilhamento, o parceiro vinculado terá acesso a todos os itens adicionados à lista, incluindo nomes de produtos, quantidades, marcas e fotografias associadas aos itens — inclusive imagens tiradas pela câmera ou selecionadas da galeria do dispositivo. Essas informações são compartilhadas como parte essencial da funcionalidade de lista colaborativa.</p>
+        <p>Você pode desfazer o compartilhamento a qualquer momento nas configurações do aplicativo.</p>
       </section>
 
       <section id="s6">
@@ -426,8 +433,8 @@
           <li>Acessar seus dados;</li>
           <li>Corrigir dados incompletos, inexatos ou desatualizados;</li>
           <li>Solicitar a exclusão de seus dados pessoais;</li>
-          <li>Revogar o consentimento a qualquer momento;</li>
-          <li>Portabilidade dos dados.</li>
+          <li>Portabilidade dos dados;</li>
+          <li>Opor-se a tratamento realizado com fundamento em hipótese de dispensa de consentimento, em caso de descumprimento da LGPD (art. 18, §2º).</li>
         </ul>
         <p>Para exercer esses direitos, entre em contato pelo e-mail: <a class="inline" href="#" data-mailto-u="suporte" data-mailto-d="mercadojunto.com.br">suporte&#64;mercadojunto.com.br</a>.</p>
       </section>
