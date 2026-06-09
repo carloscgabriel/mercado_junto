@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Excluir conta e dados — Mercado Junto</title>
+<meta name="description" content="Como excluir sua conta do Mercado Junto e todos os dados pessoais associados a ela." />
+<meta name="theme-color" content="#2f6b3d" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="favicon.svg" />
+
+<!-- Bundler thumbnail -->
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <rect width="100" height="100" fill="#2f6b3d"/>
+    <text x="50" y="62" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="44" font-weight="900" fill="#f4ecdc" letter-spacing="-2">mj</text>
+    <rect x="22" y="74" width="56" height="3" rx="1.5" fill="#f0b94a"/>
+    <circle cx="32" cy="82" r="3.5" fill="#f0b94a"/>
+    <circle cx="68" cy="82" r="3.5" fill="#f0b94a"/>
+  </svg>
+</template>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --forest: #2f6b3d;
+    --deep:   #1f4a2a;
+    --pine:   #13351f;
+    --cream:  #f4ecdc;
+    --paper:  #fbf7ef;
+    --bone:   #ece4d2;
+    --sun:    #f0b94a;
+    --ink:    #1a2a23;
+    --muted:  #5a6b60;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---- NAV ---- */
+  nav {
+    padding: 28px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .brand-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 9px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .brand-name {
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: -0.3px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    font-size: 14px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ---- HEADER ---- */
+  .doc-header {
+    padding: 48px 0 40px;
+    border-bottom: 1px solid #e5dfd1;
+    margin-bottom: 48px;
+  }
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--forest);
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    margin: 0 0 18px;
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+  h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--forest);
+  }
+  .lede {
+    font-size: 17px;
+    color: var(--muted);
+    font-weight: 500;
+    max-width: 640px;
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+
+  /* ---- DOC LAYOUT ---- */
+  .doc {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 64px;
+    padding-bottom: 80px;
+    align-items: start;
+  }
+  .toc {
+    position: sticky;
+    top: 24px;
+    font-size: 13px;
+    line-height: 1.7;
+    border-left: 1px solid #e5dfd1;
+    padding-left: 20px;
+  }
+  .toc-title {
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 14px;
+  }
+  .toc ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: toc;
+  }
+  .toc li {
+    counter-increment: toc;
+    margin-bottom: 6px;
+  }
+  .toc a {
+    color: var(--muted);
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    transition: color 120ms;
+  }
+  .toc a::before {
+    content: counter(toc, decimal-leading-zero);
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 12px;
+    color: var(--forest);
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .toc a:hover { color: var(--ink); }
+
+  .content {
+    max-width: 720px;
+    font-size: 16px;
+  }
+  .content section {
+    margin-bottom: 44px;
+    scroll-margin-top: 24px;
+  }
+  .content h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin: 0 0 16px;
+    color: var(--ink);
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  .content h2 .num {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--forest);
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 1.5px;
+    background: var(--cream);
+    border: 1px solid #e5dfd1;
+    padding: 4px 10px;
+    border-radius: 999px;
+    flex-shrink: 0;
+    position: relative;
+    top: -3px;
+  }
+  .content p {
+    margin: 0 0 14px;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  .content ul {
+    margin: 0 0 16px;
+    padding: 0;
+    list-style: none;
+  }
+  .content ul li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  .content ul li::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 11px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--sun);
+  }
+  .content strong { font-weight: 700; }
+  .content a.inline {
+    color: var(--forest);
+    font-weight: 600;
+    border-bottom: 1px solid rgba(47,107,61,0.3);
+    transition: border-color 120ms;
+  }
+  .content a.inline:hover { border-bottom-color: var(--forest); }
+
+  /* ---- BADGE ---- */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--forest);
+    background: var(--cream);
+    border: 1px solid #e5dfd1;
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .badge svg { flex-shrink: 0; }
+
+  /* ---- STEPS ---- */
+  .steps {
+    list-style: none;
+    counter-reset: step;
+    margin: 0 0 8px;
+    padding: 0;
+  }
+  .steps li {
+    counter-increment: step;
+    position: relative;
+    padding: 0 0 22px 56px;
+    line-height: 1.6;
+  }
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: -2px;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--forest);
+    color: var(--cream);
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  /* connecting line between step bullets */
+  .steps li::after {
+    content: "";
+    position: absolute;
+    left: 16.5px;
+    top: 34px;
+    bottom: 6px;
+    width: 1px;
+    background: #e0d8c7;
+  }
+  .steps li:last-child::after { display: none; }
+  .steps li strong { font-weight: 700; }
+  .kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 5px;
+    margin: 0 1px;
+    background: #fff;
+    border: 1px solid #d9d2c2;
+    border-bottom-width: 2px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+  /* ---- CALLOUT ---- */
+  .callout {
+    display: flex;
+    gap: 16px;
+    background: var(--cream);
+    border: 1px solid #e5dfd1;
+    border-radius: 16px;
+    padding: 20px 22px;
+    margin: 0 0 16px;
+  }
+  .callout .ic {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--forest);
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .callout p { margin: 0; font-size: 15px; line-height: 1.6; }
+  .callout p:first-child { font-weight: 700; margin-bottom: 4px; }
+
+  /* ---- EMAIL ROW ---- */
+  .mail-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    border: 1px solid #e5dfd1;
+    border-radius: 14px;
+    padding: 16px 20px;
+    background: #fff;
+    margin: 4px 0 16px;
+  }
+  .mail-card .mail-meta { font-size: 13px; color: var(--muted); }
+  .mail-card .mail-meta strong { color: var(--ink); }
+
+  /* ---- BACK CTA ---- */
+  .back-block {
+    margin-top: 24px;
+    padding: 40px;
+    background: var(--cream);
+    border: 1px solid #e5dfd1;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .back-block .label {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: var(--ink);
+    margin: 0;
+  }
+  .back-block .sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--forest);
+    color: var(--cream);
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: background 120ms;
+  }
+  .btn-primary:hover { background: var(--deep); }
+  .btn-primary svg { flex-shrink: 0; }
+
+  /* ---- FOOTER ---- */
+  footer {
+    border-top: 1px solid #e5dfd1;
+    padding: 40px 0 60px;
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer .foot-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  footer .foot-links a:hover { color: var(--ink); }
+
+  /* responsive */
+  @media (max-width: 900px) {
+    .doc {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .toc {
+      position: static;
+      border-left: none;
+      border-top: 1px solid #e5dfd1;
+      border-bottom: 1px solid #e5dfd1;
+      padding: 20px 0;
+    }
+    .nav-links { display: none; }
+    .doc-header { padding: 32px 0 28px; margin-bottom: 32px; }
+    .back-block { padding: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <a href="index.html" class="brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 100 100" width="40" height="40">
+          <rect width="100" height="100" fill="#2f6b3d"/>
+          <text x="50" y="62" text-anchor="middle" font-family="Inter, sans-serif" font-size="44" font-weight="900" fill="#f4ecdc" letter-spacing="-2">mj</text>
+          <rect x="22" y="74" width="56" height="2.6" rx="1.3" fill="#f0b94a"/>
+          <circle cx="32" cy="82" r="3.5" fill="#f0b94a"/>
+          <circle cx="68" cy="82" r="3.5" fill="#f0b94a"/>
+          <circle cx="55.5" cy="32" r="3" fill="#f0b94a"/>
+        </svg>
+      </div>
+      <span class="brand-name">Mercado Junto</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Início</a>
+      <a href="termos-e-privacidade.html">Termos e Privacidade</a>
+      <a href="#" data-mailto-u="suporte" data-mailto-d="mercadojunto.com.br">Suporte</a>
+    </div>
+  </nav>
+</div>
+
+<div class="wrap">
+  <header class="doc-header">
+    <div class="eyebrow">Documento legal</div>
+    <h1>Excluir <em>conta e dados</em></h1>
+    <p class="lede">Você pode excluir sua conta do Mercado Junto — e todos os dados pessoais associados a ela — a qualquer momento, pelo próprio aplicativo ou por solicitação via e-mail.</p>
+  </header>
+
+  <div class="doc">
+    <aside class="toc" aria-label="Sumário">
+      <div class="toc-title">Sumário</div>
+      <ol>
+        <li><a href="#s1">Excluir pelo aplicativo</a></li>
+        <li><a href="#s2">Excluir sem acesso ao app</a></li>
+        <li><a href="#s3">O que é excluído</a></li>
+        <li><a href="#s4">Outros direitos (LGPD)</a></li>
+      </ol>
+    </aside>
+
+    <article class="content">
+      <section id="s1">
+        <div class="badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          Recomendado
+        </div>
+        <h2><span class="num">01</span>Excluir pelo aplicativo</h2>
+        <p>A forma mais rápida e direta de encerrar sua conta. A exclusão é processada imediatamente pelos nossos servidores.</p>
+        <ol class="steps">
+          <li>Abra o <strong>Mercado Junto</strong> e faça login, se necessário.</li>
+          <li>Toque no menu <span class="kbd">⋮</span> (três pontos), no canto superior direito de qualquer tela.</li>
+          <li>Selecione <strong>“Excluir conta”</strong>.</li>
+          <li>Confirme a exclusão na janela exibida.</li>
+        </ol>
+        <div class="callout">
+          <div class="ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div>
+            <p>Exclusão imediata</p>
+            <p>Assim que você confirma, a remoção é processada na hora pelos nossos servidores — não há período de espera.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="s2">
+        <h2><span class="num">02</span>Excluir sem acesso ao aplicativo</h2>
+        <p>Se você desinstalou o app ou não consegue mais acessá-lo, envie um e-mail para o suporte com o assunto <strong>“Exclusão de conta”</strong>, a partir do <strong>mesmo endereço de e-mail cadastrado no app</strong> — é assim que confirmamos que o pedido vem do titular da conta.</p>
+        <div class="mail-card">
+          <div class="ic" style="flex-shrink:0;width:38px;height:38px;border-radius:10px;background:var(--forest);color:var(--cream);display:flex;align-items:center;justify-content:center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          </div>
+          <div class="mail-meta">
+            <div>Enviar para</div>
+            <strong><a class="inline" href="#" data-mailto-u="suporte" data-mailto-d="mercadojunto.com.br">suporte&#64;mercadojunto.com.br</a></strong>
+          </div>
+        </div>
+        <p>Atenderemos a solicitação e responderemos confirmando a exclusão.</p>
+      </section>
+
+      <section id="s3">
+        <h2><span class="num">03</span>O que é excluído</h2>
+        <p>Ao excluir sua conta, removemos:</p>
+        <ul>
+          <li>Sua conta de acesso (e-mail e credencial de autenticação);</li>
+          <li>Seu registro de usuário, incluindo o identificador de notificações (token do dispositivo);</li>
+          <li><strong>Se você for administrador de uma lista:</strong> a lista inteira é encerrada — itens, histórico e fotografias são apagados, e todos os participantes são desvinculados;</li>
+          <li><strong>Se você for participante de uma lista:</strong> os itens que você adicionou permanecem na lista, que pertence ao administrador, porém seu endereço de e-mail é removido dessas contribuições (conforme os Termos de Uso e Política de Privacidade, seções 5 e 6).</li>
+        </ul>
+        <p>Registros técnicos de infraestrutura (como endereços IP em logs do provedor) expiram automaticamente conforme a política de retenção do Google Cloud — em geral, em até 30 dias.</p>
+        <div class="callout">
+          <div class="ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <div>
+            <p>Não precisa excluir tudo de uma vez</p>
+            <p>Itens e quantidades também podem ser removidos individualmente a qualquer momento pelo próprio aplicativo, sem excluir a conta.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="s4">
+        <h2><span class="num">04</span>Outros direitos (LGPD)</h2>
+        <p>Para confirmar a existência de tratamento, acessar, corrigir ou solicitar a portabilidade dos seus dados (Lei nº 13.709/2018, art. 18), entre em contato pelo e-mail <a class="inline" href="#" data-mailto-u="suporte" data-mailto-d="mercadojunto.com.br">suporte&#64;mercadojunto.com.br</a>.</p>
+        <p>Saiba mais na nossa <a class="inline" href="termos-e-privacidade.html">página de Termos e Privacidade (LGPD)</a>.</p>
+      </section>
+
+      <div class="back-block">
+        <div>
+          <p class="label">Mudou de ideia?</p>
+          <div class="sub">Volte para a página inicial do Mercado Junto.</div>
+        </div>
+        <a href="index.html" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5"/>
+            <path d="M12 19l-7-7 7-7"/>
+          </svg>
+          Voltar à página inicial
+        </a>
+      </div>
+    </article>
+  </div>
+</div>
+
+<div class="wrap">
+  <footer>
+    <div style="display:flex; align-items:center; gap: 12px;">
+      <div class="brand-icon" style="width: 28px; height: 28px; border-radius: 7px;">
+        <svg viewBox="0 0 100 100" width="28" height="28">
+          <rect width="100" height="100" fill="#2f6b3d"/>
+          <text x="50" y="62" text-anchor="middle" font-family="Inter, sans-serif" font-size="44" font-weight="900" fill="#f4ecdc" letter-spacing="-2">mj</text>
+          <rect x="22" y="74" width="56" height="2.6" rx="1.3" fill="#f0b94a"/>
+          <circle cx="32" cy="82" r="3.5" fill="#f0b94a"/>
+          <circle cx="68" cy="82" r="3.5" fill="#f0b94a"/>
+          <circle cx="55.5" cy="32" r="3" fill="#f0b94a"/>
+        </svg>
+      </div>
+      <span>© 2026 Mercado Junto</span>
+    </div>
+    <div class="foot-links">
+      <a href="#" data-mailto-u="suporte" data-mailto-d="mercadojunto.com.br">suporte&#64;mercadojunto.com.br</a>
+      <a href="termos-e-privacidade.html">Termos e Privacidade (LGPD)</a>
+    </div>
+  </footer>
+</div>
+
+
+<script>
+  (function () {
+    var toast;
+    function showToast(target) {
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.style.cssText = [
+          'position:fixed',
+          'z-index:9999',
+          'padding:7px 12px',
+          'background:#1a2a23',
+          'color:#f4ecdc',
+          'font:500 12px/1.2 Inter, system-ui, sans-serif',
+          'letter-spacing:0.2px',
+          'border-radius:8px',
+          'box-shadow:0 4px 14px rgba(0,0,0,0.18)',
+          'pointer-events:none',
+          'opacity:0',
+          'transform:translate(-50%, -100%) translateY(4px)',
+          'transition:opacity 160ms ease, transform 160ms ease',
+          'white-space:nowrap'
+        ].join(';');
+        toast.textContent = 'E-mail copiado';
+        document.body.appendChild(toast);
+      }
+      var r = target.getBoundingClientRect();
+      toast.style.left = (r.left + r.width / 2) + 'px';
+      toast.style.top = (r.top - 6) + 'px';
+      void toast.offsetWidth;
+      toast.style.opacity = '1';
+      toast.style.transform = 'translate(-50%, -100%) translateY(0)';
+      clearTimeout(toast._timer);
+      toast._timer = setTimeout(function () {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translate(-50%, -100%) translateY(4px)';
+      }, 1600);
+    }
+
+    document.querySelectorAll('a[data-mailto-u]').forEach(function (a) {
+      var email = a.dataset.mailtoU + '@' + a.dataset.mailtoD;
+      a.href = 'mailto:' + email;
+      a.addEventListener('click', function () {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(email).then(function () {
+            showToast(a);
+          }).catch(function () {});
+        }
+      });
+    });
+  })();
+</script>
+</body>
+</html>
