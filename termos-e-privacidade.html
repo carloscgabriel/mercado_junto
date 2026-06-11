@@ -295,6 +295,24 @@
     flex-wrap: wrap;
     gap: 16px;
   }
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+  }
+
+  /* responsive */
+  @media (max-width: 640px) {
+    footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+    .footer-links {
+      flex-direction: column;
+      gap: 14px;
+    }
+  }
 
   /* responsive */
   @media (max-width: 900px) {
@@ -343,7 +361,7 @@
   <header class="doc-header">
     <div class="eyebrow">Documento legal</div>
     <h1>Termos de Uso e <em>Política de Privacidade</em></h1>
-    <div class="updated">Última atualização: 28 de maio de 2026</div>
+    <div class="updated">Última atualização: 2 de junho de 2026</div>
   </header>
 
   <div class="doc">
@@ -416,6 +434,7 @@
         <p>Ao utilizar a função de compartilhamento de lista, o seu endereço de e-mail ficará visível para o usuário com quem você escolher compartilhar a lista.</p>
         <p>Ao enviar um convite ou solicitar adesão a uma lista, o seu endereço de e-mail é incluído na notificação push enviada ao destinatário — podendo aparecer na tela de bloqueio do dispositivo — mesmo antes de o convite ser aceito.</p>
         <p>Durante o período de compartilhamento, o parceiro vinculado terá acesso a todos os itens adicionados à lista, incluindo nomes de produtos, quantidades, marcas e fotografias associadas aos itens — inclusive imagens tiradas pela câmera ou selecionadas da galeria do dispositivo. Essas informações são compartilhadas como parte essencial da funcionalidade de lista colaborativa.</p>
+        <p>Os itens que você adicionar a uma lista compartilhada passam a integrar a lista e permanecem nela mesmo após você sair da lista, ser removido por seu administrador ou excluir sua conta, hipótese em que são conservados como dado do administrador da lista. Nesse caso, o seu endereço de e-mail é removido dessas contribuições. Se você for o administrador da lista, a exclusão da sua conta encerra a lista e remove todos os itens e o histórico.</p>
         <p>Você pode desfazer o compartilhamento a qualquer momento nas configurações do aplicativo.</p>
       </section>
 
@@ -423,7 +442,7 @@
         <h2><span class="num">06</span>Retenção de Dados</h2>
         <p>Seus dados pessoais são mantidos enquanto sua conta estiver ativa. O histórico de itens adicionados à lista é retido por 30 (trinta) dias e excluído automaticamente ao término desse prazo, mesmo durante o período de atividade da conta.</p>
         <p>Os endereços IP registrados automaticamente nos logs de infraestrutura do Firebase Authentication e das Cloud Functions seguem a política de retenção do Google Cloud Logging, que retém esses registros por até 30 (trinta) dias por padrão, podendo variar conforme o tipo de log e as configurações do projeto.</p>
-        <p>Ao solicitar a exclusão de conta no aplicativo, seus dados pessoais (conta de acesso, e-mail, índice de e-mail e a lista compartilhada, incluindo itens e histórico) são removidos imediatamente pelo servidor, salvo obrigação legal de retenção.</p>
+        <p>Ao solicitar a exclusão de conta no aplicativo, sua conta de acesso, e-mail e índice de e-mail são removidos imediatamente pelo servidor, salvo obrigação legal de retenção. Se você for o administrador da lista, a lista compartilhada — incluindo itens e histórico — também é removida imediatamente. Se você for participante, os itens que você contribuiu permanecem na lista do administrador como dado dele (ver §5), porém o seu e-mail é removido dessas contribuições no momento da exclusão.</p>
       </section>
 
       <section id="s7">
@@ -506,7 +525,7 @@
       </div>
       <span>© 2026 Mercado Junto</span>
     </div>
-    <div style="display: flex; gap: 24px;">
+    <div class="footer-links">
       <a href="#" data-mailto-u="suporte" data-mailto-d="mercadojunto.com.br">suporte&#64;mercadojunto.com.br</a>
       <a href="termos-e-privacidade.html">Termos e Privacidade (LGPD)</a>
     </div>
