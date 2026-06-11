@@ -979,6 +979,24 @@
     flex-wrap: wrap;
     gap: 16px;
   }
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+  }
+
+  /* responsive */
+  @media (max-width: 640px) {
+    footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+    .footer-links {
+      flex-direction: column;
+      gap: 14px;
+    }
+  }
 
   /* responsive */
   @media (max-width: 900px) {
@@ -1383,7 +1401,7 @@
       </div>
       <span>© 2026 Mercado Junto</span>
     </div>
-    <div style="display: flex; gap: 24px;">
+    <div class="footer-links">
       <a href="#" data-mailto-u="suporte" data-mailto-d="mercadojunto.com.br">suporte&#64;mercadojunto.com.br</a>
       <a href="termos-e-privacidade.html">Termos e Privacidade (LGPD)</a>
       <a href="excluir-conta-e-dados.html">Excluir conta e dados</a>
