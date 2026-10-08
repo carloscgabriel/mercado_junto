@@ -418,6 +418,7 @@
   }
   footer .foot-links { display: flex; gap: 24px; flex-wrap: wrap; }
   footer .foot-links a:hover { color: var(--ink); }
+  @media (max-width: 640px) { footer { flex-direction: column; align-items: flex-start; gap: 24px; } footer .foot-links { flex-direction: column; gap: 14px; } }
 
   /* responsive */
   @media (max-width: 900px) {
@@ -436,6 +437,7 @@
     .doc-header { padding: 32px 0 28px; margin-bottom: 32px; }
     .back-block { padding: 28px; }
   }
+.content h3{font-size:18px;font-weight:700;color:var(--forest);margin:28px 0 10px;letter-spacing:-0.2px}
 </style>
 </head>
 <body>
@@ -523,21 +525,26 @@
 
       <section id="s3">
         <h2><span class="num">03</span>O que é excluído</h2>
-        <p>Ao excluir sua conta, removemos:</p>
         <ul>
-          <li>Sua conta de acesso (e-mail e credencial de autenticação);</li>
-          <li>Seu registro de usuário, incluindo o identificador de notificações (token do dispositivo);</li>
-          <li><strong>Se você for administrador de uma lista:</strong> a lista inteira é encerrada — itens, histórico e fotografias são apagados, e todos os participantes são desvinculados;</li>
-          <li><strong>Se você for participante de uma lista:</strong> os itens que você adicionou permanecem na lista, que pertence ao administrador, porém seu endereço de e-mail é removido dessas contribuições (conforme os Termos de Uso e Política de Privacidade, seções 5 e 6).</li>
+          <li>Sua conta de acesso (e-mail e credencial de autenticação).</li>
+          <li>Seu registro de usuário, incluindo o identificador de notificações do dispositivo.</li>
+          <li>Os registros técnicos de controle de envio associados ao seu e-mail (como o limite de tentativas do código de acesso).</li>
+          <li>Convite ou pedido de adesão pendente, se houver, é cancelado.</li>
+          <li><strong>Se você for administrador de uma lista:</strong> a lista inteira é encerrada, com itens, fotografias, histórico de itens adicionados e histórico de itens removidos apagados, e todos os participantes são desvinculados.</li>
+          <li><strong>Se você for participante:</strong> os itens que você adicionou continuam na lista, que pertence ao administrador, mas o seu e-mail é removido dessas contribuições e do histórico de itens removidos.</li>
         </ul>
-        <p>Registros técnicos de infraestrutura (como endereços IP em logs do provedor) expiram automaticamente conforme a política de retenção do Google Cloud — em geral, em até 30 dias.</p>
+        <h3>O que permanece por prazo limitado</h3>
+        <ul>
+          <li>As mensagens com o código de acesso enviadas ao seu e-mail ficam registradas na conta de envio do aplicativo por até 32 dias após o envio, inclusive após a exclusão da conta, e são então excluídas automaticamente.</li>
+          <li>Registros técnicos de infraestrutura, como endereços IP em logs do provedor, expiram pela política de retenção do Google Cloud, em geral em até 30 dias.</li>
+        </ul>
         <div class="callout">
           <div class="ic">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           </div>
           <div>
-            <p>Não precisa excluir tudo de uma vez</p>
-            <p>Itens e quantidades também podem ser removidos individualmente a qualquer momento pelo próprio aplicativo, sem excluir a conta.</p>
+            <p>Excluir dados sem excluir a conta</p>
+            <p>Você pode remover itens individualmente pelo app. O item removido vai para o histórico de itens removidos da lista, visível aos participantes, e é excluído definitivamente após 30 dias (ou antes, se a lista for encerrada). Também é possível sair da lista ou, se você for o administrador, encerrá-la.</p>
           </div>
         </div>
       </section>
@@ -583,6 +590,7 @@
     <div class="foot-links">
       <a href="#" data-mailto-u="suporte" data-mailto-d="mercadojunto.com.br">suporte&#64;mercadojunto.com.br</a>
       <a href="termos-e-privacidade.html">Termos e Privacidade (LGPD)</a>
+      <a href="excluir-conta-e-dados.html">Excluir conta e dados</a>
     </div>
   </footer>
 </div>

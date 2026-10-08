@@ -361,7 +361,7 @@
   <header class="doc-header">
     <div class="eyebrow">Documento legal</div>
     <h1>Termos de Uso e <em>Política de Privacidade</em></h1>
-    <div class="updated">Última atualização: 2 de junho de 2026</div>
+    <div class="updated">Última atualização: 7 de outubro de 2026</div>
   </header>
 
   <div class="doc">
@@ -399,7 +399,9 @@
           <li>Fotografias de produtos tiradas pela câmera ou selecionadas da galeria do dispositivo, quando o usuário optar por adicioná-las ao cadastrar um item manualmente. Essas imagens são armazenadas de forma segura como parte do cadastro do item;</li>
           <li>Imagens de produtos obtidas automaticamente via busca, quando disponíveis;</li>
           <li>Data e hora das ações realizadas no aplicativo;</li>
-          <li>Identificador do dispositivo para envio de notificações push (token FCM), armazenado enquanto o aplicativo estiver instalado e com notificações ativas;</li>
+          <li>Autoria das ações sobre os itens da lista — quem adicionou, quem fez a última alteração e quem removeu cada item (e-mail, data e hora) —, exibida aos participantes da lista (ver §5);</li>
+          <li>Endereço de e-mail de pessoa convidada por um administrador que ainda não é usuária do aplicativo, informado pelo próprio administrador ao enviar o convite (ver §8);</li>
+          <li>Identificador do dispositivo para envio de notificações push (token FCM), armazenado enquanto você estiver conectado ao aplicativo e removido ao sair da conta ou quando deixar de ser válido (por exemplo, após a desinstalação do aplicativo);</li>
           <li>Endereço IP do dispositivo, registrado automaticamente nos logs de infraestrutura do Firebase Authentication e das Cloud Functions a cada acesso;</li>
           <li>Endereço IP transmitido diretamente ao servidor da Open Food Facts quando você realiza buscas de produtos ou carrega imagens de produtos (ver §3).</li>
         </ul>
@@ -411,13 +413,14 @@
         <p>Os dados coletados são utilizados exclusivamente para:</p>
         <ul>
           <li>Autenticar o usuário no aplicativo;</li>
-          <li>Sincronizar a lista de compras entre os usuários cadastrados como parceiros;</li>
-          <li>Enviar notificações push sobre atividades na lista de compras (por exemplo: item adicionado por um parceiro), utilizando o token FCM do dispositivo;</li>
+          <li>Sincronizar a lista de compras entre todos os participantes da lista;</li>
+          <li>Enviar notificações push sobre eventos de participação na lista (por exemplo: convite recebido, pedido de adesão, aprovação ou rejeição do pedido, remoção da lista ou encerramento da lista), utilizando o token FCM do dispositivo;</li>
           <li>Garantir o funcionamento correto das funcionalidades do app.</li>
         </ul>
         <p>Seus dados <strong>NÃO</strong> são utilizados para fins publicitários, <strong>NÃO</strong> são vendidos e <strong>NÃO</strong> são compartilhados com terceiros, exceto com os seguintes provedores de infraestrutura, estritamente necessários para o funcionamento do aplicativo:</p>
         <ul>
           <li><strong>Google Firebase</strong> (Firestore, Authentication, Storage, App Check e Cloud Functions) — armazenamento, autenticação e processamento dos dados;</li>
+          <li><strong>Google (Gmail)</strong> — envio do e-mail com o código de acesso. A mensagem, com o seu endereço de e-mail e o código, fica registrada na conta de e-mail de envio do aplicativo por até 32 (trinta e dois) dias (ver §4 e §6);</li>
           <li><strong>Open Food Facts</strong> (openfoodfacts.org) — API pública de busca de produtos. As requisições de busca e o carregamento de imagens de produtos partem diretamente do seu dispositivo, o que implica a transmissão do seu endereço IP ao servidor da Open Food Facts, podendo envolver transferência internacional de dados. Nenhum outro dado pessoal é enviado a esse provedor.</li>
         </ul>
       </section>
@@ -425,24 +428,27 @@
       <section id="s4">
         <h2><span class="num">04</span>Armazenamento e Segurança</h2>
         <p>O banco de dados (Cloud Firestore), o processamento (Cloud Functions) e o armazenamento de imagens (Firebase Storage) do MercadoJunto estão hospedados na região southamerica-east1 do Google Cloud, localizada em São Paulo, Brasil. O acesso aos dados é protegido por autenticação e por regras de segurança que impedem o acesso não autorizado.</p>
-        <p>O código de acesso enviado por e-mail expira em 10 minutos e é deletado após o uso.</p>
-        <p>O Firebase Authentication pode ser operado pela Google LLC em infraestrutura localizada fora do Brasil. Isso pode implicar transferência internacional de dados nos termos do art. 33 da LGPD. O Google LLC adota cláusulas contratuais padrão e mecanismos de conformidade reconhecidos para garantir proteção adequada dos dados transferidos.</p>
+        <p>O código de acesso enviado por e-mail expira em 10 minutos, e o seu registro no banco de dados é apagado após o uso. A cópia da mensagem enviada permanece na conta de e-mail de envio do aplicativo por até 32 (trinta e dois) dias e é então excluída automaticamente.</p>
+        <p>O Firebase Authentication e o serviço de e-mail usado para enviar o código de acesso (Gmail) podem ser operados pela Google LLC em infraestrutura localizada fora do Brasil. Isso pode implicar transferência internacional de dados nos termos do art. 33 da LGPD. O Google LLC adota cláusulas contratuais padrão e mecanismos de conformidade reconhecidos para garantir proteção adequada dos dados transferidos.</p>
       </section>
 
       <section id="s5">
         <h2><span class="num">05</span>Compartilhamento de Dados</h2>
-        <p>Ao utilizar a função de compartilhamento de lista, o seu endereço de e-mail ficará visível para o usuário com quem você escolher compartilhar a lista.</p>
+        <p>Ao participar de uma lista compartilhada, o seu endereço de e-mail ficará visível para todos os participantes da lista — o administrador e até 9 participantes —, incluindo aqueles que entrarem na lista depois de você. Os participantes são definidos pelo administrador da lista (que envia convites e aprova pedidos de adesão); você não escolhe individualmente com quem a lista é compartilhada, salvo se você for o administrador.</p>
         <p>Ao enviar um convite ou solicitar adesão a uma lista, o seu endereço de e-mail é incluído na notificação push enviada ao destinatário — podendo aparecer na tela de bloqueio do dispositivo — mesmo antes de o convite ser aceito.</p>
-        <p>Durante o período de compartilhamento, o parceiro vinculado terá acesso a todos os itens adicionados à lista, incluindo nomes de produtos, quantidades, marcas e fotografias associadas aos itens — inclusive imagens tiradas pela câmera ou selecionadas da galeria do dispositivo. Essas informações são compartilhadas como parte essencial da funcionalidade de lista colaborativa.</p>
-        <p>Os itens que você adicionar a uma lista compartilhada passam a integrar a lista e permanecem nela mesmo após você sair da lista, ser removido por seu administrador ou excluir sua conta, hipótese em que são conservados como dado do administrador da lista. Nesse caso, o seu endereço de e-mail é removido dessas contribuições. Se você for o administrador da lista, a exclusão da sua conta encerra a lista e remove todos os itens e o histórico.</p>
-        <p>Você pode desfazer o compartilhamento a qualquer momento nas configurações do aplicativo.</p>
+        <p>Durante a sua participação, todos os participantes da lista — atuais e futuros — terão acesso a todos os itens adicionados à lista, incluindo nomes de produtos, quantidades, marcas e fotografias associadas aos itens — inclusive imagens tiradas pela câmera ou selecionadas da galeria do dispositivo. Essas informações são compartilhadas como parte essencial da funcionalidade de lista colaborativa.</p>
+        <p>Os itens que você adicionar a uma lista compartilhada passam a integrar a lista e permanecem nela mesmo após você sair da lista, ser removido por seu administrador ou excluir sua conta, hipótese em que são conservados como dado do administrador da lista. Nesse caso, o seu endereço de e-mail é removido dessas contribuições e do histórico de itens removidos. Se você for o administrador da lista, a exclusão da sua conta encerra a lista e remove todos os itens e os históricos.</p>
+        <p>Quando um item é removido da lista, ele passa para o histórico de itens removidos da lista, onde permanece por 30 (trinta) dias, visível a todos os participantes, com a fotografia, a quantidade e os endereços de e-mail de quem o adicionou, de quem fez a última alteração e de quem o removeu. Durante esse prazo, qualquer participante com permissão para adicionar itens pode recolocá-lo na lista.</p>
+        <p>Você pode sair da lista a qualquer momento — ou, se for o administrador, encerrá-la — nas configurações do aplicativo.</p>
       </section>
 
       <section id="s6">
         <h2><span class="num">06</span>Retenção de Dados</h2>
         <p>Seus dados pessoais são mantidos enquanto sua conta estiver ativa. O histórico de itens adicionados à lista é retido por 30 (trinta) dias e excluído automaticamente ao término desse prazo, mesmo durante o período de atividade da conta.</p>
+        <p>Os itens removidos da lista — com suas fotografias e os endereços de e-mail associados (ver §5) — são retidos por 30 (trinta) dias no histórico de itens removidos e excluídos automaticamente ao término desse prazo. São excluídos antes disso se a lista for encerrada ou se a conta do administrador for excluída.</p>
+        <p>As mensagens com o código de acesso ficam registradas na conta de e-mail de envio do aplicativo e são excluídas em até 32 (trinta e dois) dias após o envio, inclusive após a exclusão da sua conta. Registros técnicos de controle de envio — do código de acesso e de convites e pedidos de adesão (como o limite de tentativas) —, associados a um identificador derivado do seu e-mail, expiram automaticamente em até 2 (dois) dias e são apagados na exclusão da conta.</p>
         <p>Os endereços IP registrados automaticamente nos logs de infraestrutura do Firebase Authentication e das Cloud Functions seguem a política de retenção do Google Cloud Logging, que retém esses registros por até 30 (trinta) dias por padrão, podendo variar conforme o tipo de log e as configurações do projeto.</p>
-        <p>Ao solicitar a exclusão de conta no aplicativo, sua conta de acesso, e-mail e índice de e-mail são removidos imediatamente pelo servidor, salvo obrigação legal de retenção. Se você for o administrador da lista, a lista compartilhada — incluindo itens e histórico — também é removida imediatamente. Se você for participante, os itens que você contribuiu permanecem na lista do administrador como dado dele (ver §5), porém o seu e-mail é removido dessas contribuições no momento da exclusão.</p>
+        <p>Ao solicitar a exclusão de conta no aplicativo, sua conta de acesso, e-mail e índice de e-mail são removidos imediatamente pelo servidor, salvo obrigação legal de retenção e ressalvadas as cópias das mensagens com o código de acesso, excluídas no prazo acima. Se você for o administrador da lista, a lista compartilhada — incluindo itens, fotografias e históricos — também é removida imediatamente. Se você for participante, os itens que você contribuiu permanecem na lista do administrador como dado dele (ver §5), porém o seu e-mail é removido dessas contribuições e do histórico de itens removidos no momento da exclusão.</p>
       </section>
 
       <section id="s7">
@@ -461,9 +467,10 @@
 
       <section id="s8">
         <h2><span class="num">08</span>Base Legal para o Tratamento</h2>
-        <p>O tratamento dos seus dados é realizado com base na seguinte hipótese legal da LGPD (Lei nº 13.709/2018):</p>
+        <p>O tratamento dos seus dados é realizado com base nas seguintes hipóteses legais da LGPD (Lei nº 13.709/2018):</p>
         <p><strong>Execução de contrato (Art. 7°, inciso V):</strong> para todos os dados necessários ao funcionamento do serviço — endereço de e-mail (autenticação e identificação), itens da lista de compras (funcionalidade central do app) e fotografias de produtos adicionadas pelo usuário ao cadastrar um item manualmente. A fotografia é parte integrante do cadastro do item e serve para sua identificação visual; sua adição é sempre facultativa, mas, quando fornecida, constitui dado funcional tratado no âmbito da execução do serviço solicitado pelo usuário.</p>
-        <p>Para remover dados, o usuário pode excluir itens individualmente, cancelar o compartilhamento ou excluir a conta nas configurações do aplicativo. Solicitações também podem ser enviadas para <a class="inline" href="#" data-mailto-u="suporte" data-mailto-d="mercadojunto.com.br">suporte&#64;mercadojunto.com.br</a>.</p>
+        <p><strong>Legítimo interesse (Art. 7°, inciso IX):</strong> para o endereço de e-mail de pessoa convidada que ainda não é usuária do aplicativo, informado pelo administrador ao enviar o convite. Esse e-mail é usado exclusivamente para que o convidado encontre o convite ao se cadastrar e é mantido por até 30 (trinta) dias — prazo de validade do convite — ou até o encerramento da lista, se ocorrer antes. O convidado pode se opor a esse tratamento pelo e-mail <a class="inline" href="#" data-mailto-u="suporte" data-mailto-d="mercadojunto.com.br">suporte&#64;mercadojunto.com.br</a>.</p>
+        <p>Para remover dados, o usuário pode remover itens individualmente — o item removido vai para o histórico de itens removidos e é excluído definitivamente após 30 (trinta) dias (ver §5 e §6) —, sair da lista, encerrá-la (se for o administrador) ou excluir a conta nas configurações do aplicativo. Solicitações também podem ser enviadas para <a class="inline" href="#" data-mailto-u="suporte" data-mailto-d="mercadojunto.com.br">suporte&#64;mercadojunto.com.br</a>.</p>
       </section>
 
       <section id="s9">
@@ -528,6 +535,7 @@
     <div class="footer-links">
       <a href="#" data-mailto-u="suporte" data-mailto-d="mercadojunto.com.br">suporte&#64;mercadojunto.com.br</a>
       <a href="termos-e-privacidade.html">Termos e Privacidade (LGPD)</a>
+      <a href="excluir-conta-e-dados.html">Excluir conta e dados</a>
     </div>
   </footer>
 </div>
