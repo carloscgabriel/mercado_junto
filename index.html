@@ -934,6 +934,7 @@
     position: relative;
   }
   .play-badge:hover { transform: translateY(-2px); }
+  .store-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
   .play-badge .play-icon {
     width: 28px;
     height: 28px;
@@ -1311,7 +1312,7 @@
             <div class="member-row">
               <div class="member-avatar">B</div>
               <div class="member-info">
-                <div class="member-name">bruno@email.com</div>
+                <div class="member-name"><!--email_off-->bruno@email.com<!--/email_off--></div>
                 <div class="perm-row">
                   <span class="perm-pill">Criar</span>
                   <span class="perm-pill">Modificar</span>
@@ -1323,7 +1324,7 @@
             <div class="member-row">
               <div class="member-avatar">C</div>
               <div class="member-info">
-                <div class="member-name">camila@email.com</div>
+                <div class="member-name"><!--email_off-->camila@email.com<!--/email_off--></div>
                 <div class="perm-row">
                   <span class="perm-pill">Criar</span>
                   <span class="perm-pill off">Modificar</span>
@@ -1335,7 +1336,7 @@
             <div class="member-row">
               <div class="member-avatar">D</div>
               <div class="member-info">
-                <div class="member-name">diego@email.com</div>
+                <div class="member-name"><!--email_off-->diego@email.com<!--/email_off--></div>
                 <div class="perm-row">
                   <span class="perm-pill off">Criar</span>
                   <span class="perm-pill off">Modificar</span>
@@ -1369,7 +1370,8 @@
   <section id="download" class="download">
     <div class="section-eyebrow">Baixar</div>
     <h2>Comece ho<span style="font-family: Georgia, 'Times New Roman', serif;">j</span>e. <span style="color: var(--forest);">Grátis, sem anúncios.</span></h2>
-    <p class="section-lede">Disponível para Android. Sem anúncios, sem assinatura, sem captura de dados além do necessário. Use sozinho ou compartilhe com até 9 pessoas.</p>
+    <p class="section-lede">Disponível para Android e iPhone. Sem anúncios, sem assinatura, sem captura de dados além do necessário. Use sozinho ou compartilhe com até 9 pessoas.</p>
+    <div class="store-badges">
     <a href="#" class="play-badge">
       <svg class="play-icon" viewBox="0 0 32 32" fill="none">
         <path d="M5 4l16 12L5 28V4z" fill="#34A853"/>
@@ -1383,6 +1385,15 @@
       </div>
       <span class="play-soon">Em breve</span>
     </a>
+    <a href="#" class="play-badge">
+      <svg class="play-icon" viewBox="0 0 24 24" fill="#fff"><path d="M16.37 12.62c-.03-2.6 2.12-3.85 2.22-3.91-1.21-1.77-3.09-2.01-3.76-2.04-1.6-.16-3.12.94-3.93.94-.81 0-2.06-.92-3.39-.89-1.74.03-3.35 1.01-4.25 2.57-1.81 3.14-.46 7.79 1.3 10.34.86 1.25 1.89 2.65 3.23 2.6 1.3-.05 1.79-.84 3.36-.84 1.57 0 2.01.84 3.38.81 1.4-.03 2.28-1.27 3.13-2.53.99-1.45 1.39-2.85 1.42-2.92-.03-.01-2.72-1.04-2.71-4.13zM13.79 4.98c.71-.86 1.19-2.06 1.06-3.25-1.02.04-2.27.68-3 1.54-.66.76-1.23 1.98-1.08 3.15 1.14.09 2.31-.58 3.02-1.44z"></path></svg>
+      <div class="play-text">
+        <div class="small">DISPONÍVEL EM BREVE NA</div>
+        <div class="big">App Store</div>
+      </div>
+      <span class="play-soon">Em breve</span>
+    </a>
+    </div>
   </section>
 </div>
 
