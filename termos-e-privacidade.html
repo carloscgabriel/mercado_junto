@@ -361,7 +361,7 @@
   <header class="doc-header">
     <div class="eyebrow">Documento legal</div>
     <h1>Termos de Uso e <em>Política de Privacidade</em></h1>
-    <div class="updated">Última atualização: 12 de outubro de 2026</div>
+    <div class="updated">Última atualização: 14 de outubro de 2026</div>
   </header>
 
   <div class="doc">
@@ -401,9 +401,9 @@
           <li>Data e hora das ações realizadas no aplicativo;</li>
           <li>Autoria das ações sobre os itens da lista — quem adicionou, quem fez a última alteração e quem removeu cada item (e-mail, data e hora) —, exibida aos participantes da lista (ver §5);</li>
           <li>Endereço de e-mail de pessoa convidada por um administrador que ainda não é usuária do aplicativo, informado pelo próprio administrador ao enviar o convite (ver §8);</li>
-          <li>Identificador do dispositivo para envio de notificações push (token FCM), armazenado enquanto você estiver conectado ao aplicativo e removido ao sair da conta ou quando deixar de ser válido (por exemplo, após a desinstalação do aplicativo);</li>
+          <li>Identificador do dispositivo para envio de notificações push (token FCM — no iPhone, vinculado ao identificador de notificações da Apple), armazenado enquanto você estiver conectado ao aplicativo e removido ao sair da conta ou quando deixar de ser válido (por exemplo, após a desinstalação do aplicativo);</li>
           <li>Endereço IP do dispositivo, registrado automaticamente nos logs de infraestrutura do Firebase Authentication e das Cloud Functions a cada acesso;</li>
-          <li>Verificação de integridade do aplicativo e do dispositivo (Firebase App Check, por meio do Google Play Integrity), realizada automaticamente nas comunicações com o servidor para impedir o uso do serviço por aplicativos não autorizados;</li>
+          <li>Verificação de integridade do aplicativo e do dispositivo (Firebase App Check, por meio do Google Play Integrity, em aparelhos Android, e do App Attest e do DeviceCheck da Apple, no iPhone), realizada automaticamente nas comunicações com o servidor para impedir o uso do serviço por aplicativos não autorizados;</li>
           <li>Endereço IP transmitido diretamente ao servidor da Open Food Facts quando você realiza buscas de produtos ou carrega imagens de produtos (ver §3);</li>
           <li>Mensagens que você enviar ao suporte (<a class="inline" href="#" data-mailto-u="suporte" data-mailto-d="mercadojunto.com.br">suporte&#64;mercadojunto.com.br</a>), com o seu endereço de e-mail e o conteúdo que você escrever (ver §3 e §6).</li>
         </ul>
@@ -423,6 +423,7 @@
         <p>Seus dados <strong>NÃO</strong> são utilizados para fins publicitários, <strong>NÃO</strong> são vendidos e <strong>NÃO</strong> são compartilhados com terceiros, exceto com os seguintes provedores de infraestrutura, estritamente necessários para o funcionamento do aplicativo:</p>
         <ul>
           <li><strong>Google Firebase</strong> (Firestore, Authentication, Storage, Cloud Messaging, App Check e Cloud Functions) — armazenamento, autenticação, envio de notificações push, verificação de integridade do aplicativo e processamento dos dados;</li>
+          <li><strong>Apple</strong> — no iPhone, entrega das notificações push pelo Apple Push Notification service (APNs), que recebe o texto de cada notificação (ver §5), e verificação de integridade do aplicativo e do dispositivo (App Attest e DeviceCheck);</li>
           <li><strong>Google (Gmail)</strong> — envio do e-mail com o código de acesso e recebimento das mensagens enviadas ao suporte, por meio de uma conta Gmail comum dedicada ao aplicativo, regida pelos Termos de Serviço e pela Política de Privacidade do Google para contas pessoais. A mensagem com o código, com o seu endereço de e-mail, fica registrada nessa conta por até 32 (trinta e dois) dias (ver §4 e §6);</li>
           <li><strong>ImprovMX</strong> — serviço de encaminhamento de e-mails que recebe as mensagens enviadas para <a class="inline" href="#" data-mailto-u="suporte" data-mailto-d="mercadojunto.com.br">suporte&#64;mercadojunto.com.br</a> e as repassa à conta de e-mail do aplicativo. Não guarda o conteúdo das mensagens depois de entregá-las e mantém por até 7 (sete) dias um registro técnico de cada uma (remetente, destinatário, assunto e dados da conexão — ver §4 e §6);</li>
           <li><strong>Open Food Facts (openfoodfacts.org)</strong> — API pública de busca de produtos. As requisições de busca e o carregamento de imagens de produtos partem diretamente do seu dispositivo, o que implica a transmissão do seu endereço IP ao servidor da Open Food Facts, podendo envolver transferência internacional de dados. Nenhum outro dado pessoal é enviado a esse provedor.</li>
@@ -433,7 +434,7 @@
         <h2><span class="num">04</span>Armazenamento e Segurança</h2>
         <p>O banco de dados (Cloud Firestore), o processamento (Cloud Functions) e o armazenamento de imagens (Firebase Storage) do MercadoJunto estão hospedados na região southamerica-east1 do Google Cloud, localizada em São Paulo, Brasil. O acesso aos dados é protegido por autenticação e por regras de segurança que impedem o acesso não autorizado.</p>
         <p>O código de acesso enviado por e-mail expira em 10 minutos, e o seu registro no banco de dados é apagado após o uso. A cópia da mensagem enviada permanece na conta de e-mail de envio do aplicativo por até 32 (trinta e dois) dias e é então excluída automaticamente.</p>
-        <p>O Firebase Authentication, o Firebase Cloud Messaging (notificações push), o Firebase App Check (verificação de integridade), os registros técnicos de acesso (logs, que contêm o endereço IP — ver §2 e §6) e a conta Gmail do aplicativo (envio do código de acesso e recebimento das mensagens ao suporte) podem ser operados pela Google LLC em infraestrutura localizada fora do Brasil. O ImprovMX (encaminhamento das mensagens ao suporte) opera nos Estados Unidos e na União Europeia.</p>
+        <p>O Firebase Authentication, o Firebase Cloud Messaging (notificações push), o Firebase App Check (verificação de integridade), os registros técnicos de acesso (logs, que contêm o endereço IP — ver §2 e §6) e a conta Gmail do aplicativo (envio do código de acesso e recebimento das mensagens ao suporte) podem ser operados pela Google LLC em infraestrutura localizada fora do Brasil. O ImprovMX (encaminhamento das mensagens ao suporte) opera nos Estados Unidos e na União Europeia. No iPhone, as notificações push e a verificação de integridade passam também pelos serviços da Apple Inc., que podem operar fora do Brasil.</p>
         <p>Essas transferências internacionais de dados (art. 33 da LGPD) são necessárias para prestar o serviço que você solicita — enviar o código de acesso, autenticar sua conta, enviar notificações e responder às suas mensagens — e se apoiam no art. 33, inciso IX, combinado com o art. 7º, inciso V, da LGPD. Para os serviços do Google Cloud, como os registros técnicos de acesso, os termos de tratamento de dados do Google adotam também as cláusulas-padrão contratuais aprovadas pela ANPD.</p>
       </section>
 
