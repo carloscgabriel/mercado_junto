@@ -935,6 +935,21 @@
   }
   .play-badge:hover { transform: translateY(-2px); }
   .store-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+  .store-badges .play-badge { width: 240px; box-sizing: border-box; }
+  .store-note { max-width: 520px; margin: 28px auto 0; font-size: 14px; line-height: 1.55; color: var(--muted); text-wrap: pretty; }
+  .store-note a { color: var(--forest); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+  .store-note a:hover { color: var(--deep); }
+  .testers-dialog { width: min(440px, calc(100vw - 32px)); border: 0; border-radius: 20px; padding: 32px 28px 28px; background: var(--cream); color: var(--ink); box-shadow: 0 24px 60px rgba(19,53,31,0.25); }
+  .testers-dialog::backdrop { background: rgba(19,53,31,0.45); backdrop-filter: blur(4px); }
+  .testers-dialog p { margin: 0 0 12px; font-size: 15px; line-height: 1.6; text-wrap: pretty; }
+  .testers-dialog #testers-title { font-size: 18px; color: var(--forest); }
+  .testers-close { position: absolute; top: 10px; right: 12px; width: 36px; height: 36px; border: 0; border-radius: 50%; background: transparent; color: var(--muted); font-size: 24px; line-height: 1; cursor: pointer; }
+  .testers-close:hover { background: rgba(0,0,0,0.06); color: var(--ink); }
+  .testers-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+  .testers-btn { flex: 1 1 160px; display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 18px; border-radius: 12px; border: 1.5px solid var(--forest); background: transparent; color: var(--forest); font: inherit; font-size: 15px; font-weight: 600; text-decoration: none; cursor: pointer; }
+  .testers-btn:hover { background: rgba(47,107,61,0.08); color: var(--forest); }
+  .testers-btn.primary { background: var(--forest); color: #fff; }
+  .testers-btn.primary:hover { background: var(--deep); color: #fff; }
   .play-badge .play-icon {
     width: 28px;
     height: 28px;
@@ -1372,7 +1387,7 @@
     <h2>Comece ho<span style="font-family: Georgia, 'Times New Roman', serif;">j</span>e. <span style="color: var(--forest);">Grátis, sem anúncios.</span></h2>
     <p class="section-lede">Disponível para Android e iPhone. Sem anúncios, sem assinatura, sem captura de dados além do necessário. Use sozinho ou compartilhe com até 9 pessoas.</p>
     <div class="store-badges">
-    <a href="#" class="play-badge">
+    <a href="#" class="play-badge" data-open-testers="">
       <svg class="play-icon" viewBox="0 0 32 32" fill="none">
         <path d="M5 4l16 12L5 28V4z" fill="#34A853"/>
         <path d="M5 4l16 12-3 2.5L5 4z" fill="#4285F4"/>
@@ -1380,10 +1395,10 @@
         <path d="M21 16l5 3.5-3 2-2-2v-3.5z" fill="#FBBC04"/>
       </svg>
       <div class="play-text">
-        <div class="small">DISPONÍVEL EM BREVE NA</div>
+        <div class="small">EM TESTES NA</div>
         <div class="big">Google Play</div>
       </div>
-      <span class="play-soon">Em breve</span>
+      <span class="play-soon">Participe</span>
     </a>
     <a href="#" class="play-badge">
       <svg class="play-icon" viewBox="0 0 24 24" fill="#fff"><path d="M16.37 12.62c-.03-2.6 2.12-3.85 2.22-3.91-1.21-1.77-3.09-2.01-3.76-2.04-1.6-.16-3.12.94-3.93.94-.81 0-2.06-.92-3.39-.89-1.74.03-3.35 1.01-4.25 2.57-1.81 3.14-.46 7.79 1.3 10.34.86 1.25 1.89 2.65 3.23 2.6 1.3-.05 1.79-.84 3.36-.84 1.57 0 2.01.84 3.38.81 1.4-.03 2.28-1.27 3.13-2.53.99-1.45 1.39-2.85 1.42-2.92-.03-.01-2.72-1.04-2.71-4.13zM13.79 4.98c.71-.86 1.19-2.06 1.06-3.25-1.02.04-2.27.68-3 1.54-.66.76-1.23 1.98-1.08 3.15 1.14.09 2.31-.58 3.02-1.44z"></path></svg>
@@ -1394,8 +1409,20 @@
       <span class="play-soon">Em breve</span>
     </a>
     </div>
+    <p class="store-note">Android em fase de testes: para participar, escreva para <a href="#" data-open-testers="">suporte&#64;mercadojunto.com.br</a> informando o e-mail da sua conta Google.</p>
   </section>
 </div>
+<dialog class="testers-dialog" id="testers-dialog" aria-labelledby="testers-title">
+  <button type="button" class="testers-close" aria-label="Fechar" data-close-testers="">×</button>
+  <div class="android-testes">
+    <p id="testers-title"><strong>Android — em testes fechados.</strong></p>
+    <p>Para participar, envie um e-mail para <strong>suporte&#64;mercadojunto.com.br</strong> informando o e-mail da conta Google que você usa na Play Store. Assim que o acesso for liberado, você recebe o link para instalar por e-mail, em resposta à sua mensagem.</p>
+  </div>
+  <div class="testers-actions">
+    <button type="button" class="testers-btn primary" id="testers-copy">Copiar e-mail</button>
+    <a class="testers-btn" id="testers-mail" href="#">Abrir app de e-mail</a>
+  </div>
+</dialog>
 
 <div class="wrap">
   <footer>
@@ -1578,7 +1605,8 @@
 
     document.querySelectorAll('a[data-mailto-u]').forEach(function (a) {
       var email = a.dataset.mailtoU + '@' + a.dataset.mailtoD;
-      a.href = 'mailto:' + email;
+      a.href = 'mailto:' + email + (a.dataset.mailtoQ || '');
+      if (a.hasAttribute('data-mailto-nocopy')) return;
       a.addEventListener('click', function () {
         // Copy in parallel; mailto: still fires if a client is configured.
         if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -1587,6 +1615,31 @@
           }).catch(function () {});
         }
       });
+    });
+
+    var dlg = document.getElementById('testers-dialog');
+    var tEmail = 'suporte' + '@' + 'mercadojunto.com.br';
+    var copyBtn = document.getElementById('testers-copy');
+    document.getElementById('testers-mail').href = 'mailto:' + tEmail + '?subject=Quero%20testar%20o%20MercadoJunto%20no%20Android&body=E-mail%20da%20minha%20conta%20Google%20(Play%20Store)%3A%20';
+    document.querySelectorAll('[data-open-testers]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        copyBtn.textContent = 'Copiar e-mail';
+        if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+      });
+    });
+    dlg.querySelector('[data-close-testers]').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+    copyBtn.addEventListener('click', function () {
+      function done() { copyBtn.textContent = 'E-mail copiado ✓'; }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(tEmail).then(done).catch(fallback);
+      } else fallback();
+      function fallback() {
+        var ta = document.createElement('textarea'); ta.value = tEmail; ta.setAttribute('readonly', '');
+        ta.style.cssText = 'position:fixed;opacity:0'; dlg.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); done(); } catch (err) {} dlg.removeChild(ta);
+      }
     });
   })();
 </script>
