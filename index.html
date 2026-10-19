@@ -950,6 +950,10 @@
   .testers-btn:hover { background: rgba(47,107,61,0.08); color: var(--forest); }
   .testers-btn.primary { background: var(--forest); color: #fff; }
   .testers-btn.primary:hover { background: var(--deep); color: #fff; }
+  .testers-steps { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 16px; }
+  .testers-steps .testers-btn { width: 100%; }
+  .testers-dialog p.testers-help { margin: 20px 0 0; font-size: 13px; color: var(--muted); }
+  .testers-help a { color: var(--forest); }
   .play-badge .play-icon {
     width: 28px;
     height: 28px;
@@ -1409,18 +1413,29 @@
       <span class="play-soon">Em breve</span>
     </a>
     </div>
-    <p class="store-note">Android em fase de testes: para participar, escreva para <a href="#" data-open-testers="">suporte&#64;mercadojunto.com.br</a> informando o e-mail da sua conta Google.</p>
+    <p class="store-note">Android em fase de testes: qualquer pessoa pode participar. <a href="#" data-open-testers="">Veja como entrar</a>.</p>
   </section>
 </div>
 <dialog class="testers-dialog" id="testers-dialog" aria-labelledby="testers-title">
   <button type="button" class="testers-close" aria-label="Fechar" data-close-testers="">×</button>
   <div class="android-testes">
-    <p id="testers-title"><strong>Android — em testes fechados.</strong></p>
-    <p>Para participar, envie um e-mail para <strong>suporte&#64;mercadojunto.com.br</strong> informando o e-mail da conta Google que você usa na Play Store. Assim que o acesso for liberado, você recebe o link para instalar por e-mail, em resposta à sua mensagem.</p>
-  </div>
-  <div class="testers-actions">
-    <button type="button" class="testers-btn primary" id="testers-copy">Copiar e-mail</button>
-    <a class="testers-btn" id="testers-mail" href="#">Abrir app de e-mail</a>
+    <p id="testers-title"><strong>Android — em testes.</strong></p>
+    <p>Qualquer pessoa pode participar, em três passos. Faça tudo com a <strong>mesma conta Google da Play Store</strong> do seu celular.</p>
+    <ol class="testers-steps">
+      <li>
+        <p><strong>1. Entre no grupo de testadores.</strong> Toque em <em>Participar do grupo</em> e confirme na janela seguinte, sem alterar nada. Deu certo quando esse botão some da página.</p>
+        <a class="testers-btn primary" href="https://groups.google.com/g/mercadojunto-testadores" target="_blank" rel="noopener">Entrar no grupo</a>
+      </li>
+      <li>
+        <p><strong>2. Ative o teste</strong> tocando em <em>Torne-se um testador</em>. Se o botão não aparecer, aguarde alguns minutos e abra de novo.</p>
+        <a class="testers-btn" href="https://play.google.com/apps/testing/com.mercadojunto.app" target="_blank" rel="noopener">Ativar o teste</a>
+      </li>
+      <li>
+        <p><strong>3. Instale o app</strong> pela Google Play.</p>
+        <a class="testers-btn" href="https://play.google.com/store/apps/details?id=com.mercadojunto.app" target="_blank" rel="noopener">Abrir na Google Play</a>
+      </li>
+    </ol>
+    <p class="testers-help">Teve alguma dificuldade? Escreva para <a href="#" data-mailto-u="suporte" data-mailto-d="mercadojunto.com.br" data-mailto-nocopy="">suporte&#64;mercadojunto.com.br</a>.</p>
   </div>
 </dialog>
 
@@ -1618,29 +1633,14 @@
     });
 
     var dlg = document.getElementById('testers-dialog');
-    var tEmail = 'suporte' + '@' + 'mercadojunto.com.br';
-    var copyBtn = document.getElementById('testers-copy');
-    document.getElementById('testers-mail').href = 'mailto:' + tEmail + '?subject=Quero%20testar%20o%20MercadoJunto%20no%20Android&body=E-mail%20da%20minha%20conta%20Google%20(Play%20Store)%3A%20';
     document.querySelectorAll('[data-open-testers]').forEach(function (el) {
       el.addEventListener('click', function (e) {
         e.preventDefault();
-        copyBtn.textContent = 'Copiar e-mail';
         if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
       });
     });
     dlg.querySelector('[data-close-testers]').addEventListener('click', function () { dlg.close(); });
     dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
-    copyBtn.addEventListener('click', function () {
-      function done() { copyBtn.textContent = 'E-mail copiado ✓'; }
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(tEmail).then(done).catch(fallback);
-      } else fallback();
-      function fallback() {
-        var ta = document.createElement('textarea'); ta.value = tEmail; ta.setAttribute('readonly', '');
-        ta.style.cssText = 'position:fixed;opacity:0'; dlg.appendChild(ta); ta.select();
-        try { document.execCommand('copy'); done(); } catch (err) {} dlg.removeChild(ta);
-      }
-    });
   })();
 </script>
 </body>
