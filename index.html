@@ -352,16 +352,16 @@
   }
   .screens-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 32px;
-    align-items: end;
+    align-items: start;
   }
   .screen-card {
     display: flex;
     flex-direction: column;
     gap: 24px;
   }
-  .screen-card.center { margin-bottom: 32px; }
+  .screen-card.center { transform: translateY(-32px); }
   .screen-frame {
     position: relative;
     aspect-ratio: 9 / 18.5;
@@ -1038,6 +1038,7 @@
     .how { padding: 56px 32px; margin: 0; border-radius: 20px; }
     .steps { grid-template-columns: 1fr; gap: 40px; }
     .screens-grid { grid-template-columns: 1fr; gap: 56px; }
+    .screen-card.center { transform: none; }
     .screen-frame { max-width: 280px; margin: 0 auto; }
     .screens-header { flex-direction: column; align-items: flex-start; }
     section { padding: 64px 0; }
